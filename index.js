@@ -1,4 +1,5 @@
 const express = require("express");
+const {users} = require("./data/users.json")
 
 const app = express();
 
@@ -11,6 +12,13 @@ app.get("/",(req,res)=>{
         message: "Server is up and running.....",
     })
 })
+
+app.get("/users", (req, res) => {
+  res.status(200).json({
+    success: true,
+    data: users,
+  });
+});
 
 
 app.listen(PORT, ()=>{
